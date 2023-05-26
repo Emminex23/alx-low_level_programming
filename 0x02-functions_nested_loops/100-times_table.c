@@ -7,7 +7,7 @@
  */
 void print_times_table(int n)
 {
-	int i, j;
+	int i, j, r;
 
 	for (i = 0; i <= n; i++)
 	{
@@ -17,8 +17,7 @@ void print_times_table(int n)
 			{
 				return;
 			}
-			int r = (i * j);
-
+			r = (i * j);
 			if (r >= 100)
 			{
 				_putchar((r / 100) + '0');
