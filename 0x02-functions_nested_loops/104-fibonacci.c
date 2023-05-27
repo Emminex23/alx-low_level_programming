@@ -7,9 +7,9 @@
 int main(void)
 {
 	int i;
-	unsigned long n1 = 1;
-	unsigned long n2 = 2; 
-	unsigned long nxt_num = n1 + n2;
+	unsigned long int n1 = 1;
+	unsigned long int n2 = 2;
+	unsigned long int nxt_num = n1 + n2;
 
 	printf("%lu, %lu, ", n1, n2);
 	for (i = 3; i <= 98; i++)
