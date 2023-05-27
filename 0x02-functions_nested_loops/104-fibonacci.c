@@ -7,14 +7,14 @@
 int main(void)
 {
 	int i;
-	unsigned long int n1 = 1;
-	unsigned long int n2 = 2;
-	unsigned long int nxt_num = n1 + n2;
+	double n1 = 1;
+	double n2 = 2;
+	double nxt_num = n1 + n2;
 
-	printf("%lu, %lu, ", n1, n2);
+	printf("%.0f, %.0f, ", n1, n2);
 	for (i = 3; i <= 98; i++)
 	{
-		printf("%lu", nxt_num);
+		printf("%.0f", nxt_num);
 		n1 = n2;
 		n2 = nxt_num;
 		nxt_num = n1 + n2;
