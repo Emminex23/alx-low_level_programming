@@ -13,9 +13,9 @@ int main(void)
 	unsigned long int nxt_num = n1 + n2;
 	unsigned long int sum = 2;
 
-	for (i = 1; i < 30; i++)
+	for (i = 1; i < 4000000; i++)
 	{
-		if (nxt_num != 4000000 && nxt_num % 2 == 0)
+		if (nxt_num < 4000000 && nxt_num % 2 == 0)
 		{
 			sum += nxt_num;
 		}
