@@ -7,11 +7,11 @@
 int main(void)
 {
 	int i;
-	int n1 = 1;
-	int n2 = 2;
-	unsigned long nxtnum = n1 + n2;
+	unsigned long int n1 = 1;
+	unsigned long int n2 = 2;
+	unsigned long int nxtnum = n1 + n2;
 
-	printf("%d, %d, ", n1, n2);
+	printf("%lu, %lu, ", n1, n2);
 	for (i = 3; i <= 50; i++)
 	{
 		printf("%lu", nxtnum);
