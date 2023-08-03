@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * helper - helps to increment y
+ * helper - helps to increment y and checks for sqrt
  * @n: the number whose sqrt we want to find
- * @y: The number of time to increment
+ * @y: possible sqrt of n
  *
  * Return:-1 if n doesn't have natural sqrt
  * Otherwise the sqrt
