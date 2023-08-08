@@ -1,5 +1,22 @@
 #include "main.h"
 /**
+ * _strlen - returns the length of a str
+ * @str: pointer to the str
+ *
+ * Return: int
+ */
+int _strlen(char *str)
+{
+	int i, sum = 0;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		sum += 1;
+	}
+	return (sum);
+}
+
+/**
  * _strdup - function that returns a pointer to a newly allocated
  * space in memory, which contains a copy of the
  * string given as a parameter.
@@ -19,7 +36,7 @@ char *_strdup(char *str)
 		return (NULL);
 	}
 
-	ptr = (char *) malloc(sizeof(*str));
+	ptr = (char *) malloc(sizeof(_strlen(str) + 1));
 
 	if (ptr == NULL)
 	{
@@ -29,5 +46,6 @@ char *_strdup(char *str)
 	{
 		ptr[i] = str[i];
 	}
+	ptr[i] = '\0';
 	return (ptr);
 }
