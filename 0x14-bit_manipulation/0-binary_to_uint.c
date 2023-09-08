@@ -33,6 +33,7 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int result;
 	unsigned int multiplier;
 	const char *end;
+
 	if (!b)
 	{
 		return (0);
