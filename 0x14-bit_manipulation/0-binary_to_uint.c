@@ -1,5 +1,4 @@
 #include "main.h"
-#define NULL ((void *) 0)
 
 /**
  * _strlen - finds the length of a string
@@ -9,6 +8,10 @@
  */
 int _strlen(const char *str)
 {
+	if (!str)
+	{
+		return (0);
+	}
 	if (*str == '\0')
 	{
 		return (0);
@@ -27,14 +30,17 @@ int _strlen(const char *str)
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int result = 0;
-	unsigned int multiplier = 1;
-	const char *end = b + (_strlen(b) - 1);
-
-	if (b == NULL)
+	unsigned int result;
+	unsigned int multiplier;
+	const char *end;
+	if (!b)
 	{
 		return (0);
 	}
+
+	result = 0;
+	multiplier = 1;
+	end = b + (_strlen(b) - 1);
 
 	while (end >= b)
 	{
