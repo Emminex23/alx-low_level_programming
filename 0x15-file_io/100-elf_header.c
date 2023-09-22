@@ -1,9 +1,5 @@
+#include "main.h"
 #include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <elf.h>
 /**
  * exit_with_error - exits and prints appropriate errno
  * @msg: pointer to msg
@@ -12,7 +8,7 @@
  */
 void exit_with_error(const char *msg)
 {
-	fprintf(stderr, "Error: %s, errno: %d\n", msg, errno);
+	fprintf(stderr, "Error: %s\n", msg);
 	exit(98);
 }
 
@@ -25,7 +21,7 @@ void exit_with_error(const char *msg)
  */
 int main(int argc, char *argv[])
 {
-	int i, fd = -1;
+	int fd, i;
 	ssize_t bytes_read;
 	Elf64_Ehdr header;
 
@@ -40,13 +36,11 @@ int main(int argc, char *argv[])
 		exit_with_error("Unable to open file.");
 
 	bytes_read = read(fd, &header, sizeof(Elf64_Ehdr));
-	if (bytes_read < 0 || (size_t)bytes_read < sizeof(Elf64_Ehdr))
+	if (bytes_read < (ssize_t)sizeof(Elf64_Ehdr))
 		exit_with_error("Unable to read ELF header.");
 
-	if (header.e_ident[EI_MAG0] != ELFMAG0 ||
-        header.e_ident[EI_MAG1] != ELFMAG1 ||
-        header.e_ident[EI_MAG2] != ELFMAG2 ||
-        header.e_ident[EI_MAG3] != ELFMAG3)
+	if (header.e_ident[0] != 0x7f || header.e_ident[1] != 'E' ||
+	header.e_ident[2] != 'L' || header.e_ident[3] != 'F')
 	{
 		exit_with_error("Not an ELF file.");
 	}
@@ -64,10 +58,6 @@ int main(int argc, char *argv[])
 	printf("Type:                              %d\n", header.e_type);
 	printf("Entry point address:               0x%lx\n", header.e_entry);
 
-	if (close(fd) < 0)
-	{
-		fprintf(stderr, "Error: Can't close fd %d\n", fd);
-		exit(100);
-	}
+	close(fd);
 	return (0);
 }
